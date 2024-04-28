@@ -1,10 +1,11 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
+import Source from './src/index';
 
 function App(): React.JSX.Element {
   return (
     <View>
-      <Text>Trading App</Text>
+      <Source />
     </View>
   );
 }
