@@ -1,30 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
-import ccxt from 'ccxt';
 import SelectDropdown from 'react-native-select-dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const emojisWithIcons = [
   {title: 'BTC/USDT', icon: 'emoticon-happy-outline', symbol: 'binance'},
 ];
-const defaultExchangeId = 'binance';
-let defaultExchange = new ccxt[defaultExchangeId]();
 
 const Index = () => {
-  const [exchange, setExchange] = useState(defaultExchange);
-
-  useEffect(() => {
-    const markets = exchange.loadMarkets();
-    console.log(markets);
-  }, []);
-
+  const callData = () => {};
   return (
     <View>
       <SelectDropdown
         data={emojisWithIcons}
         onSelect={(selectedItem, index) => {
           console.log(selectedItem, index);
-          setExchange(selectedItem.title);
         }}
         renderButton={(selectedItem, isOpened) => {
           return (
