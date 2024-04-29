@@ -37,27 +37,22 @@ export function Pairs(props) {
   const [q, setQ] = useState('');
   const exInfo = useExchangeInfo();
   const [favOnly, setFavOnly] = useState(false);
-  const authCtx = useAuth();
 
   const toggleFavOnly = React.useCallback(
     () => setFavOnly(t => !t),
     [setFavOnly],
   );
 
-  // const entries = React.useMemo(() => {
-  //   const favs = new Set(authCtx.user.map(x => x.favoritePairs).orElse([]));
-  //   return (data ?? [])
-  //     .filter(
-  //       x =>
-  //         (q.length === 0
-  //           ? x.symbol.endsWith('USDT')
-  //           : x.symbol.includes(q.toUpperCase())) &&
-  //         (favOnly ? favs.has(x.symbol) : true),
-  //     )
-  //     .slice(0, favOnly ? undefined : 30);
-  // }, [q, data, favOnly]);
+  const entries = React.useMemo(() => {
+    return (data ?? [])
+      .filter(x =>
+        q.length === 0
+          ? x.symbol.endsWith('USDT')
+          : x.symbol.includes(q.toUpperCase()),
+      )
+      .slice(0, favOnly ? undefined : 30);
+  }, [q, data, favOnly]);
 
-  const entries = [];
   return (
     <>
       <View style={{paddingHorizontal: 20}}>
@@ -92,14 +87,8 @@ export function Pairs(props) {
   );
 }
 
-function useIsFavourite(symbol) {
-  const authCtx = useAuth();
-  return authCtx.user.isPresentAnd(v => v.favoritePairs.includes(symbol));
-}
-
 function Row({item, exInfo, onPress}) {
   const handlePress = React.useCallback(() => onPress(item), [item, onPress]);
-  const isFavourite = useIsFavourite(item.symbol);
 
   return (
     <TouchableOpacity
