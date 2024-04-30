@@ -65,7 +65,6 @@ function KlinesContextProvider(props) {
 }
 
 export default function ChartScreen(props) {
-  console.log(props);
   // const protect = useProtected();
   const ctx = useAuth();
   const loader = useLoading();

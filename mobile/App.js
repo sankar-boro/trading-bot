@@ -26,6 +26,9 @@ import AlertScreen from './src/screens/AlertScreen';
 import {Dimensions} from 'react-native';
 import PickSymbolScreen from './src/screens/PickSymbolScreen';
 import {AskReview} from './src/util/util';
+import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 
 const TabsNavigator = createBottomTabNavigator();
 
@@ -37,10 +40,42 @@ function Tabs() {
       screenOptions={{
         tabBarShowLabel: false,
       }}>
-      <TabsNavigator.Screen name="Trending" component={TrendingScreen} />
-      <TabsNavigator.Screen name="Wallet" component={WalletScreen} />
-      <TabsNavigator.Screen name="Alerts" component={AlertsScreen} />
-      <TabsNavigator.Screen name="Profile" component={ProfileScreen} />
+      <TabsNavigator.Screen
+        name="Trending"
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcon name="chart-waterfall" size={30} color="#2d2d2d" />
+          ),
+        }}
+        component={TrendingScreen}
+      />
+      <TabsNavigator.Screen
+        name="Wallet"
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <SimpleLineIcon name="wallet" size={30} color="#2d2d2d" />
+          ),
+        }}
+        component={WalletScreen}
+      />
+      <TabsNavigator.Screen
+        name="Alerts"
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <SimpleLineIcon name="bell" size={30} color="#2d2d2d" />
+          ),
+        }}
+        component={AlertsScreen}
+      />
+      <TabsNavigator.Screen
+        name="Profile"
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <AntIcon name="user" size={30} color="#2d2d2d" />
+          ),
+        }}
+        component={ProfileScreen}
+      />
     </TabsNavigator.Navigator>
   );
 }
