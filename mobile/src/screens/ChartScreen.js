@@ -66,36 +66,36 @@ function KlinesContextProvider(props) {
 
 export default function ChartScreen(props) {
   console.log(props);
-  const protect = useProtected();
+  // const protect = useProtected();
   const ctx = useAuth();
   const loader = useLoading();
   function handleStar() {
-    protect(() => {
-      loader(() =>
-        ctx.addOrRemoveFavourite(props.route.params.symbol).catch(AlertError),
-      );
-    });
+    // protect(() => {
+    loader(() =>
+      ctx.addOrRemoveFavourite(props.route.params.symbol).catch(AlertError),
+    );
+    // });
   }
   function handleAlertPressed() {
-    protect(() => {
-      props.navigation.navigate('Alert', {symbol: props.route.params.symbol});
-    });
+    // protect(() => {
+    props.navigation.navigate('Alert', {symbol: props.route.params.symbol});
+    // });
   }
   function handleBuyPressed() {
-    protect(() => {
-      props.navigation.navigate('Trade', {
-        symbol: props.route.params.symbol,
-        type: 'buy',
-      });
+    // protect(() => {
+    props.navigation.navigate('Trade', {
+      symbol: props.route.params.symbol,
+      type: 'buy',
     });
+    // });
   }
   function handleSellPressed() {
-    protect(() => {
-      props.navigation.navigate('Trade', {
-        symbol: props.route.params.symbol,
-        type: 'sell',
-      });
+    // protect(() => {
+    props.navigation.navigate('Trade', {
+      symbol: props.route.params.symbol,
+      type: 'sell',
     });
+    // });
   }
 
   // const isFavourite = useMemo(
@@ -182,28 +182,48 @@ function Holdings(props) {
   if (!tradeInfo) {
     return null;
   }
-  return ctx.user
-    .map(u => (
-      <View>
-        <Text style={{fontSize: 20, fontWeight: '500'}}>Available</Text>
-        {[
-          [tradeInfo.baseAsset, tradeInfo.baseAssetPrecision],
-          [tradeInfo.quoteAsset, tradeInfo.quoteAssetPrecision],
-        ].map(([asset, precision]) => (
-          <View
-            key={asset}
-            style={{flexDirection: 'row', marginTop: 10, alignItems: 'center'}}>
-            <View>
-              <CryptoAssetImage asset={asset} />
-            </View>
-            <Text style={{marginLeft: 10}}>
-              {asset}: {(u.wallet[asset] ?? 0).toFixed(precision)}
-            </Text>
+  // return ctx.user
+  //   .map(u => (
+  //     <View>
+  //       <Text style={{fontSize: 20, fontWeight: '500'}}>Available</Text>
+  //       {[
+  //         [tradeInfo.baseAsset, tradeInfo.baseAssetPrecision],
+  //         [tradeInfo.quoteAsset, tradeInfo.quoteAssetPrecision],
+  //       ].map(([asset, precision]) => (
+  //         <View
+  //           key={asset}
+  //           style={{flexDirection: 'row', marginTop: 10, alignItems: 'center'}}>
+  //           <View>
+  //             <CryptoAssetImage asset={asset} />
+  //           </View>
+  //           <Text style={{marginLeft: 10}}>
+  //             {asset}: {(u.wallet[asset] ?? 0).toFixed(precision)}
+  //           </Text>
+  //         </View>
+  //       ))}
+  //     </View>
+  //   ))
+  //   .orElse(null);
+  return (
+    <View>
+      <Text style={{fontSize: 20, fontWeight: '500'}}>Available</Text>
+      {[
+        [tradeInfo.baseAsset, tradeInfo.baseAssetPrecision],
+        [tradeInfo.quoteAsset, tradeInfo.quoteAssetPrecision],
+      ].map(([asset, precision]) => (
+        <View
+          key={asset}
+          style={{flexDirection: 'row', marginTop: 10, alignItems: 'center'}}>
+          <View>
+            <CryptoAssetImage asset={asset} />
           </View>
-        ))}
-      </View>
-    ))
-    .orElse(null);
+          {/* <Text style={{marginLeft: 10}}>
+            {asset}: {(u.wallet[asset] ?? 0).toFixed(precision)}
+          </Text> */}
+        </View>
+      ))}
+    </View>
+  );
 }
 
 function Price(props) {

@@ -58,9 +58,6 @@ function Navigator() {
       onStateChange={() => {
         const previousRouteName = routeNameRef.current;
         const currentRouteName = navigatorRef?.current?.getCurrentRoute()?.name;
-        if (previousRouteName !== currentRouteName) {
-          Analytics.setCurrentScreen(currentRouteName);
-        }
         routeNameRef.current = currentRouteName;
       }}>
       <Stack.Navigator

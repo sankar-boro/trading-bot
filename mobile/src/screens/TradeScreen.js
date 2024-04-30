@@ -22,7 +22,7 @@ export default function TradeScreen(props) {
   return (
     <View style={{backgroundColor: '#fff', flex: 1}}>
       <StackHeader title={props.route.params.symbol} />
-      {ctx.user.mapLazy(
+      {/* {ctx.user.mapLazy(
         user => (
           <TradeBase
             user={user}
@@ -34,7 +34,13 @@ export default function TradeScreen(props) {
         () => (
           <Button onPress={handleSignupPressed}>Signup</Button>
         ),
-      )}
+      )} */}
+      <TradeBase
+        user={{}}
+        symbol={props.route.params.symbol}
+        type={props.route.params.type}
+        navigationProps={props}
+      />
     </View>
   );
 }
@@ -63,7 +69,8 @@ function TradeBase(props) {
     tradeInfo[props.type === 'buy' ? 'baseAsset' : 'quoteAsset'];
   const qtynum = parseFloat(qty.replace(/,/g, '.')) || 0;
   const takeQty = qtynum * (props.type === 'sell' ? price : 1 / price);
-  const availability = props.user.wallet[actionAsset] ?? 0;
+  // const availability = props.user.wallet[actionAsset] ?? 0;
+  const availability = 0;
 
   function handleSubmit() {
     loading(() =>
@@ -110,9 +117,9 @@ function TradeBase(props) {
                 borderRadius: 5,
                 borderColor: Colors.gray,
                 alignItems: 'center',
-                backgroundColor: selectedPerc.isPresentAnd(y => y >= x)
-                  ? Colors.gray
-                  : Colors.lightgray,
+                // backgroundColor: selectedPerc.isPresentAnd(y => y >= x)
+                //   ? Colors.gray
+                //   : Colors.lightgray,
                 paddingVertical: 5,
               }}>
               <Text style={{fontWeight: '500', color: '#000'}}>
