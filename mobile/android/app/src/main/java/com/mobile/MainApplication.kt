@@ -1,4 +1,4 @@
-package com.mobile
+package com.loony.loonystocks
 
 import android.app.Application
 import com.facebook.react.PackageList

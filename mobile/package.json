@@ -1,5 +1,5 @@
 {
-  "name": "mobile",
+  "name": "loonystocks",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,10 +10,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^19.2.2",
+    "@react-native-firebase/auth": "^19.2.2",
+    "@react-native-firebase/firestore": "^19.2.2",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
+    "firebase": "^10.11.1",
     "react": "18.2.0",
     "react-native": "0.73.7",
     "react-native-gesture-handler": "^2.16.0",

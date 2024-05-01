@@ -4,11 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@react-native-firebase/auth": "^19.2.2",
     "ccxt": "^4.3.2"
   },
   "scripts": {
     "start": "node ./index.js",
-    "build-android": "cd ./mobile && yarn run android",
-    "start-android": "cd ./mobile && yarn start"
+    "build-android": "cd ./loonystocks && yarn run android",
+    "start-android": "cd ./loonystocks && yarn start"
   }
 }

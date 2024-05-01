@@ -1,0 +1,29 @@
+{
+    "project_info": {
+      "project_number": "128714557525",
+      "project_id": "stocks-e0336",
+      "storage_bucket": "stocks-e0336.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:128714557525:android:bb72f283d1eb33867a6cdc",
+          "android_client_info": {
+            "package_name": "com.loony.loonystocks"
+          }
+        },
+        "oauth_client": [],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBhzszCFOroxEDNwi9WTa8-oxHPZFimSYI"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": []
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

@@ -1,3 +1,4 @@
+import './firebaseInit';
 import 'react-native-gesture-handler';
 import React, {ReactNode, useEffect, useRef, useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
